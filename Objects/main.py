@@ -1,34 +1,32 @@
-import turtle
-jerry = turtle.Turtle()
-print(jerry)
+from turtle import Turtle, Screen
+import random
 
-jerry.shape("turtle")
-jerry.color("blue")
-jerry.pencolor("brown")
-jerry.forward(100)
-jerry.left(90)
-jerry.forward(100)
-jerry.left(90)
-jerry.forward(100)
-jerry.left(90)
-jerry.forward(100)
 
-timmy = turtle.Turtle()
-print(timmy)
-timmy.shape("turtle")
-timmy.color("red")
+
+
+timmy = Turtle()
+timmy.color("black")
 timmy.pencolor("blue")
-timmy.forward(200)
-timmy.left(90)
-timmy.forward(200)
-timmy.left(90)
-timmy.forward(200)
-timmy.left(90)
-timmy.forward(200)
+colors = ["red", "blue", "black", "green", "yellow"]
 
+def movement(num_sides):
+    turn = 360 / num_sides
+    for x in range(num_sides):
+        timmy.forward(100)
+        timmy.right(turn)
 
+for x in range(3, 11):
+    timmy.color(random.choice(colors))
+    movement(x)
+        
+    
+    
+    
 
-my_screen = turtle.Screen()
-print(my_screen.canvheight)
+    
+    
+    
+
+my_screen = Screen()
 my_screen.exitonclick()
 
