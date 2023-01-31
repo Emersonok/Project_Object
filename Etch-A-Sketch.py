@@ -6,24 +6,30 @@ screen = Screen()
 
 def move_forward():
     jerry.forward(10)
-def move_upwards():
-    jerry.setheading(90)
-def move_downwards():
-    jerry.setheading(270)
+def move_left():
+    new_heading = jerry.heading() + 10
+    jerry.setheading(new_heading)
 def move_backwards():
-    jerry.setheading(180)
+    jerry.backward(10)
 def move_right():
-    jerry.setheading(0)
-def curve():
-    jerry.tilt(25)
+    new_heading = jerry.heading() - 10
+    jerry.setheading(new_heading)
+def hide_line():
+    jerry.penup()
+def appear_line():
+    jerry.pendown()
+def clear_all():
+    jerry.reset()
+
     
     
 
 screen.listen()
-screen.onkey(key= "space", fun = move_forward)
-screen.onkey(key = "Up", fun = move_upwards)
-screen.onkey(key = "Down", fun = move_downwards)
-screen.onkey(key = "Left", fun = move_backwards)
-screen.onkey(key = "Right", fun = move_right)
-screen.onkey(key = "v", fun = curve)
+screen.onkey(move_forward, "space")
+screen.onkey(move_backwards, "Left")
+screen.onkey(move_right, "Down")
+screen.onkey(move_left, "Up")
+screen.onkey(hide_line, "b")
+screen.onkey(appear_line, "c")
+screen.onkey(clear_all, "x")
 screen.exitonclick()
