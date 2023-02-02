@@ -2,7 +2,7 @@ from turtle import Turtle, Screen
 import random
 screen = Screen()
 screen.setup(500, 400)
-choice = screen.textinput("Select", "Choose a winner")
+user_choice = screen.textinput("Select", "Choose a winner")
 is_game_on = False
 all_turtles = []
 
@@ -14,12 +14,20 @@ for turtle_index in range(0, 6):
    new_turtle.color(colors[turtle_index])
    new_turtle.penup() 
    new_turtle.goto(-230, y_positions[turtle_index])
+   all_turtles.append(new_turtle)
 
-if choice:
+if user_choice:
     is_game_on = True
 
 while is_game_on:
     for turtle in all_turtles:
+        if turtle.xcor() > 230:
+            is_game_on = False
+            winning_color = turtle.pencolor()
+            if winning_color ==  user_choice:
+                print(f"You've won! The {winning_color} turtle is the winner")
+            else:
+                print(f"You've lost! The {winning_color} turtle is the winner")
         rand_distance =random.randint(0, 10)
         turtle.forward(rand_distance)
     
